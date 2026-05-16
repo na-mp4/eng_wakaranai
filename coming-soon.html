@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>準備中 - ENGLISH QUEST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-top:#2b1055;
+    --sky-mid:#7c2d63;
+    --sky-low:#e94e77;
+    --sun-1:#ffb347;
+    --sun-2:#ffcf6b;
+    --cream:#fff4d6;
+    --pink:#ff6fa3;
+    --ink:#1a0b2e;
+    --accent:#ffd93d;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{
+    height:100%;
+    overflow:hidden;
+  }
+
+  body{
+    font-family:'DotGothic16', monospace;
+    background:linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 50%, var(--sky-low) 100%);
+    color:var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    image-rendering:pixelated;
+    position:relative;
+  }
+
+  /* ピクセル風の星をちりばめる */
+  .stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:var(--cream);
+    box-shadow:0 0 0 0 var(--cream);
+    animation:twinkle 2s infinite;
+  }
+  .star:nth-child(1){top:8%;left:12%;animation-delay:0s;}
+  .star:nth-child(2){top:15%;left:80%;animation-delay:0.3s;}
+  .star:nth-child(3){top:25%;left:30%;animation-delay:0.6s;}
+  .star:nth-child(4){top:12%;left:55%;animation-delay:0.9s;}
+  .star:nth-child(5){top:30%;left:70%;animation-delay:1.2s;}
+  .star:nth-child(6){top:6%;left:40%;animation-delay:1.5s;}
+  .star:nth-child(7){top:20%;left:90%;animation-delay:0.4s;}
+  .star:nth-child(8){top:35%;left:8%;animation-delay:0.7s;}
+
+  @keyframes twinkle{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.3;transform:scale(0.5);}
+  }
+
+  .container{
+    text-align:center;
+    padding:20px;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:30px;
+  }
+
+  /* ピクセルアートのキャラ（SVG）*/
+  .pixel-char{
+    width:200px;
+    height:200px;
+    image-rendering:pixelated;
+    animation:float 2s ease-in-out infinite;
+  }
+
+  @keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+  }
+
+  .code-404{
+    font-family:'Press Start 2P', monospace;
+    font-size:clamp(40px, 8vw, 72px);
+    color:var(--accent);
+    text-shadow:
+      4px 4px 0 var(--ink),
+      4px 4px 0 #d4af1f,
+      8px 8px 0 rgba(0,0,0,0.3);
+    letter-spacing:4px;
+  }
+
+  .message{
+    font-family:'Press Start 2P', monospace;
+    font-size:clamp(14px, 2.5vw, 20px);
+    color:var(--cream);
+    text-shadow:2px 2px 0 var(--ink);
+    line-height:1.8;
+  }
+
+  .sub-message{
+    font-family:'DotGothic16', monospace;
+    font-size:clamp(16px, 2.5vw, 22px);
+    color:var(--pink);
+    margin-top:10px;
+    text-shadow:2px 2px 0 var(--ink);
+    animation:blink 1.5s infinite;
+  }
+
+  @keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.4;}
+  }
+
+  /* 地面のピクセル */
+  .ground{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:60px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--ink) 0,
+        var(--ink) 16px,
+        #2d1a47 16px,
+        #2d1a47 32px
+      );
+    border-top:8px solid var(--accent);
+    box-shadow:0 -4px 0 var(--ink) inset;
+  }
+</style>
+</head>
+<body>
+
+  <div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- ピクセルアートのキャラクター（困り顔のモンスター）-->
+    <svg class="pixel-char" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+      <!-- 体（紫の丸っこいやつ）-->
+      <rect x="5" y="3" width="6" height="1" fill="#ff6fa3"/>
+      <rect x="4" y="4" width="8" height="1" fill="#ff6fa3"/>
+      <rect x="3" y="5" width="10" height="1" fill="#ff6fa3"/>
+      <rect x="3" y="6" width="10" height="1" fill="#ff6fa3"/>
+      <rect x="3" y="7" width="10" height="1" fill="#ff6fa3"/>
+      <rect x="3" y="8" width="10" height="1" fill="#ff6fa3"/>
+      <rect x="3" y="9" width="10" height="1" fill="#ff6fa3"/>
+      <rect x="4" y="10" width="8" height="1" fill="#ff6fa3"/>
+      <rect x="5" y="11" width="6" height="1" fill="#ff6fa3"/>
+
+      <!-- 影 -->
+      <rect x="4" y="9" width="8" height="1" fill="#d94e7f"/>
+      <rect x="5" y="10" width="6" height="1" fill="#d94e7f"/>
+
+      <!-- 目（白）-->
+      <rect x="5" y="6" width="2" height="2" fill="#fff4d6"/>
+      <rect x="9" y="6" width="2" height="2" fill="#fff4d6"/>
+
+      <!-- 瞳（困り目）-->
+      <rect x="5" y="7" width="1" height="1" fill="#1a0b2e"/>
+      <rect x="10" y="7" width="1" height="1" fill="#1a0b2e"/>
+
+      <!-- 口（へにょり）-->
+      <rect x="7" y="9" width="2" height="1" fill="#1a0b2e"/>
+      <rect x="6" y="10" width="1" height="1" fill="#1a0b2e"/>
+      <rect x="9" y="10" width="1" height="1" fill="#1a0b2e"/>
+
+      <!-- 足 -->
+      <rect x="5" y="12" width="2" height="1" fill="#ff6fa3"/>
+      <rect x="9" y="12" width="2" height="1" fill="#ff6fa3"/>
+
+      <!-- アンテナ -->
+      <rect x="6" y="2" width="1" height="1" fill="#ffd93d"/>
+      <rect x="9" y="2" width="1" height="1" fill="#ffd93d"/>
+      <rect x="6" y="1" width="1" height="1" fill="#ffd93d"/>
+      <rect x="9" y="1" width="1" height="1" fill="#ffd93d"/>
+    </svg>
+
+    <div class="code-404">404</div>
+
+    <div class="message">PLAYERS NOT FOUND</div>
+
+    <div class="sub-message">準備中ですよ〜！</div>
+
+  </div>
+
+  <div class="ground"></div>
+
+</body>
+</html>
